@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 17:25:27 by asalmi            #+#    #+#             */
-/*   Updated: 2024/05/25 22:45:56 by asalmi           ###   ########.fr       */
+/*   Created: 2024/05/25 22:36:21 by asalmi            #+#    #+#             */
+/*   Updated: 2024/05/25 22:44:20 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-#define SO_LONG_H
+#include "so_long.h"
 
-#include "./get_next_line/get_next_line.h"
-#include <fcntl.h>
+int main()
+{
+    int fd;
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-#endif
+    fd = open("map.txt", O_RDONLY);
+    
+    printf("%s", get_next_line(fd));
+    printf("%s", get_next_line(fd));
+    printf("%s", get_next_line(fd));
+    printf("%s", get_next_line(fd));
+}

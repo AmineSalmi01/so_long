@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -Imlx 
 RM = rm -rf
 
-SRC = $(wildcard *.c)
+SRC = $(wildcard *.c) $(wildcard get_next_line/*c)
 OBJC = $(SRC:.c=.o)
 
 all : $(NAME)
