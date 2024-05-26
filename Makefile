@@ -1,6 +1,6 @@
 NAME = so_Long
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Imlx 
+CFLAGS = -Wall -Wextra -Werror 
 RM = rm -rf
 
 SRC = $(wildcard *.c) $(wildcard get_next_line/*c)
@@ -9,7 +9,7 @@ OBJC = $(SRC:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJC) so_Long.h
-	$(CC) $(CFLAGS) $(OBJC)  -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
+	$(CC) $(CFLAGS) $(OBJC) MLX/libmlx.a -framework OpenGL -framework AppKit  -o $@
 
 %.o : %.c so_Long.h
 	$(CC) $(CFLAGS) -c $< -o $@
