@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 22:36:21 by asalmi            #+#    #+#             */
-/*   Updated: 2024/05/26 21:57:39 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/05/26 22:37:43 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int main()
     int i, j;
 
     mlx = mlx_init();
-    win = mlx_new_window(mlx, 1200, 900, "so_long");
+    win = mlx_new_window(mlx, 500, 300, "so_long");
     img = mlx_new_image(mlx, 600, 360);
     image = mlx_xpm_file_to_image(mlx, "./images/wall.xpm", &width, &height);
 
@@ -84,7 +84,7 @@ int main()
         while (map[i][j])
         {
             if (map[i][j] == '1')
-                mlx_put_image_to_window(mlx, win,image, i, j);
+                mlx_put_image_to_window(mlx, win,image, i * 140, j * 140);
             j++;
         }
         i++;
