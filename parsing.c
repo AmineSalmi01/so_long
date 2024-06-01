@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:42:24 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/01 17:53:43 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/01 21:27:47 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,41 @@ void check_extension(char *arg)
     }
     close(fd);
 }
+void validate_elements(t_game *game)
+{
+    int i;
+    int j;
+    
+    i = 0;
+    while (game->map[i])
+    {
+        j = 0;
+        while (game->map[i][j])
+        {
+            if (game->map[i][j] != '1' &&
+                game->map[i][j] != '0' && 
+                game->map[i][j] != 'C' && 
+                game->map[i][j] != 'E' && 
+                game->map[i][j] != 'P' && 
+                game->map[i][j] != '\n')
+                put_message("Error\nInvalid element in the map!\n", 2);
+            j++;
+        }
+        i++;
+    }
+}
 
 void check_elemnts(t_game *game)
 {
-    if (count_elemnt(game, 'P') != 1)
-        put_message("Error\nPlayer please !\n", 2);
-
+    if (count_element(game->map, 'P') != 1)
+        put_message("Error\nMap should contain one 'Player'!\n", 2);
+    if (count_element(game->map, 'E') != 1)
+        put_message("Error\nMap should contain one 'Exit'!\n", 2);
+    if (!count_element(game->map, 'C'))
+        put_message("Error\nMap should contain at least one 'Coins'!\n", 2);
+    validate_elements(game);
 }
-void pars(t_game *game)
+void check_map(t_game *game)
 {
     check_elemnts(game);
 }

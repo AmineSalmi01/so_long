@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:43:36 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/01 17:54:32 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/01 20:36:39 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t ft_strlen(const char *s)
     return (i);
 }
 
-int count_elemnt(t_game *game, char c)
+int count_element(char **map, char c)
 {
     int i;
     int j;
@@ -30,12 +30,12 @@ int count_elemnt(t_game *game, char c)
 
     i = 0;
     counter = 0;
-    while (game->map[i])
+    while (map[i])
     {
         j = 0;
-        while (game->map[i][j])
+        while (map[i][j])
         {
-            if (game->map[i][j] == c)
+            if (map[i][j] == c)
                 counter++;
             j++;
         }

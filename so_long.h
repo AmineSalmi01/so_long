@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:25:27 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/01 17:53:58 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/01 20:36:28 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ size_t ft_strlen(const char *s);
 
 char    **get_map(char *file_name);
 
-int count_elemnt(t_game *game, char c);
-void pars(t_game *game);
+int count_element(char **map, char c);
+
+void check_map(t_game *game);
 
 #endif
