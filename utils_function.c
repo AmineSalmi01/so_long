@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:43:36 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/02 10:41:13 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/03 20:50:33 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,38 @@ void    lenght_map(t_game *game)
         }
         (game->size_y)++;
     }
+}
+
+void	ft_putchar_fd(char c, int fd)
+{
+	if (fd < 0)
+		return ;
+	write(fd, &c, 1);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (fd < 0)
+		return ;
+	if (n > 2147483647 || n < -2147483648)
+		return ;
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+	}
+	if (n > 9)
+	{
+		ft_putnbr_fd((n / 10), fd);
+		ft_putchar_fd((n % 10) + 48, fd);
+	}
+	else
+	{
+		ft_putchar_fd(n + 48, fd);
+	}
 }

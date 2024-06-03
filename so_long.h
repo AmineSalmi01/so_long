@@ -6,17 +6,37 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:25:27 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/02 17:18:56 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/03 20:51:03 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 #define SO_LONG_H
 
+#include "./MLX42/include/MLX42/MLX42.h"
+
+typedef struct s_position {
+    int x_position;
+    int y_position;
+}   t_position;
+
 typedef struct s_game {
     char    **map;
+    mlx_t    *mlx;
+    mlx_texture_t *ground_t;
+    mlx_texture_t *wall_t;
+    mlx_texture_t *player_t;
+    mlx_texture_t *coins_t;
+    mlx_texture_t *exit_t;
+    mlx_image_t *ground;
+    mlx_image_t *wall;
+    mlx_image_t *player;
+    mlx_image_t *coins;
+    mlx_image_t *exit;
     int size_x;
     int size_y;
+    int count_coins;
+    t_position player_position;
 }   t_game;
 
 #include "./get_next_line/get_next_line.h"
@@ -39,5 +59,13 @@ int count_element(char **map, char c);
 void check_map(t_game *game);
 
 void lenght_map(t_game *game);
+
+void close_game(t_game *game);
+
+void    print_map(t_game *game);
+
+int move_processing(struct mlx_key_data keydata, void  *param);
+
+void	ft_putnbr_fd(int n, int fd);
 
 #endif
