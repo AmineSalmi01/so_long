@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:52:56 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/04 20:11:20 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/04 23:54:39 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void free_map(t_game *game)
 {
 	int i;
 
-	if (game->map == NULL)
+	if (game && game->map == NULL)
 		return ;
 	i = 0;
 	while (game->map[i])
@@ -24,11 +24,12 @@ void free_map(t_game *game)
 		free(game->map[i]);
 		i++;
 	}
-	free(game->map);
+	if(game->map)
+		free(game->map);
 	game->map = NULL;
 }
 
-void	put_message(char *s, int fd, t_game *game)
+void	put_error(char *s, int fd, t_game *game)
 {
 	(void)game;
 	if (!s)

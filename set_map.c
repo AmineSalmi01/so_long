@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 15:22:40 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/04 21:20:39 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/04 23:55:01 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ char    **get_map(char *file_name)
     if (fd < 0)
         return (NULL);
     size = count_line(fd);
+    if(!size)
+        return NULL;
     close(fd);
     map = (char **)malloc(sizeof(char *) * (size + 1));
     if (!map)

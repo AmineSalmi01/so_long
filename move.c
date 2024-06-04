@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:37:38 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/04 21:33:33 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/04 22:15:02 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void vertical(struct mlx_key_data keydata, t_game *game)
 {
-    // printf("the pos player is :\n%d\n%d\n", game->player_position.x_position, game->player_position.y_position);
     if (keydata.key == MLX_KEY_W)
     {
         if (game->map[game->player_position.y_position - 1][game->player_position.x_position] != '1')

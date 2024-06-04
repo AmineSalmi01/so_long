@@ -6,19 +6,22 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 13:22:53 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/04 21:11:28 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/05 00:03:38 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void    init_struct(t_game *game, char *filename)
+int    init_struct(t_game *game, char *filename)
 {
     game->map = get_map(filename);
+    if(!game->map)
+        return 0;
     lenght_map(game);
     game->exit_error = 0;
     game->mlx = mlx_init(game->size_x * 40, game->size_y * 40, "so_long", false);
     game->count_coins = count_element(game->map, 'C');
+    return 1;
 }
 
 void set_game(t_game *game)
@@ -61,17 +64,20 @@ void leaks()
 }
 int main(int ac, char **av)
 {
-    atexit(leaks);
-    t_game *game = malloc(sizeof(t_game));
+    // atexit(leaks);
+    t_game game;
 
+    ft_bzero(&game, sizeof(t_game));
     if (ac != 2)
-        put_message("Error\nProvide a map !", 2, game);
-    check_extension(av[1], game);
-    init_struct(game, av[1]);
-    check_map(game);
-    set_game(game);
-    print_map(game);
-    mlx_key_hook(game->mlx, (mlx_keyfunc)move_processing, game);
-    mlx_loop(game->mlx);
+        put_error("Error\nProvide a map !", STDERR_FILENO, &game);
+    check_extension(av[1], &game);
+    init_struct(&game, av[1]);
+    if(!init_struct(&game, av[1]))
+        put_error("Error\nEmpty map !", STDERR_FILENO, &game);
+    check_map(&game);
+    set_game(&game);
+    print_map(&game);
+    mlx_key_hook(game.mlx, (mlx_keyfunc)move_processing, &game);
+    mlx_loop(game.mlx);
     return 0;
 }

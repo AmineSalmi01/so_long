@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:25:27 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/04 19:48:43 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/05 00:03:25 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_game {
 
 void check_extension(char *arg, t_game *game);
 
-void	put_message(char *s, int fd, t_game *game);
+void	put_error(char *s, int fd, t_game *game);
 
 size_t ft_strlen(const char *s);
 
@@ -68,5 +68,9 @@ void    print_map(t_game *game);
 int move_processing(struct mlx_key_data keydata, void  *param);
 
 void	ft_putnbr_fd(int n, int fd);
+
+int    init_struct(t_game *game, char *filename);
+
+void	ft_bzero(void *s, size_t n);
 
 #endif
