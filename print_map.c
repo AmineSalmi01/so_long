@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:17:06 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/03 23:43:36 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/04 21:39:18 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void print_coins(t_game *game, int i, int j)
 
 void print_exit(t_game *game, int i, int j)
 {
-    if (game->count_coins == 1)
+    if (game->count_coins == 0)
     {
-    if (mlx_image_to_window(game->mlx, game->exit, j * 40, i * 40) < 0)
-        close_game(game);
+        if (mlx_image_to_window(game->mlx, game->exit, j * 40, i * 40) < 0)
+            close_game(game);
     }
 }
 

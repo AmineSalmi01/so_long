@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:37:38 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/03 23:49:26 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/04 21:33:33 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void vertical(struct mlx_key_data keydata, t_game *game)
     {
         if (game->map[game->player_position.y_position - 1][game->player_position.x_position] != '1')
         {
+            if (game->map[game->player_position.y_position - 1][game->player_position.x_position] == 'C')
+                (game->count_coins)--;
             game->map[game->player_position.y_position][game->player_position.x_position] = '0';
             game->map[game->player_position.y_position - 1][game->player_position.x_position] = 'P';
         }
@@ -27,6 +29,8 @@ void vertical(struct mlx_key_data keydata, t_game *game)
     {
         if (game->map[game->player_position.y_position + 1][game->player_position.x_position] != '1')
         {
+            if (game->map[game->player_position.y_position + 1][game->player_position.x_position] == 'C')
+                (game->count_coins)--;
             game->map[game->player_position.y_position][game->player_position.x_position] = '0';
             game->map[game->player_position.y_position + 1][game->player_position.x_position] = 'P';
         }
@@ -40,6 +44,8 @@ void horizontal(struct mlx_key_data keydata, t_game *game)
     {
         if (game->map[game->player_position.y_position][game->player_position.x_position + 1] != '1')
         {
+            if (game->map[game->player_position.y_position][game->player_position.x_position + 1] == 'C')
+                (game->count_coins)--;
             game->map[game->player_position.y_position][game->player_position.x_position] = '0';
             game->map[game->player_position.y_position][game->player_position.x_position + 1] = 'P';
         }
@@ -48,8 +54,10 @@ void horizontal(struct mlx_key_data keydata, t_game *game)
     {
         if (game->map[game->player_position.y_position][game->player_position.x_position - 1] != '1')
         {
+            if (game->map[game->player_position.y_position][game->player_position.x_position - 1] == 'C')
+                (game->count_coins)--;
             game->map[game->player_position.y_position][game->player_position.x_position] = '0';
-            game->map[game->player_position.y_position + 1][game->player_position.x_position - 1] = 'P';
+            game->map[game->player_position.y_position][game->player_position.x_position - 1] = 'P';
         }
     }
     print_map(game);
@@ -58,7 +66,7 @@ void horizontal(struct mlx_key_data keydata, t_game *game)
 int move_processing(struct mlx_key_data keydata, void  *param)
 {
     t_game *game;
-    
+
     game = (t_game *)param;
     if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
         vertical(keydata, game);
@@ -68,5 +76,7 @@ int move_processing(struct mlx_key_data keydata, void  *param)
         horizontal(keydata, game);
     if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
         vertical(keydata, game);
+    if (keydata.key == MLX_KEY_ESCAPE)
+	    close_game(game);
     return (1);
 }

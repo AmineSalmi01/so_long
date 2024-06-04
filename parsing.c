@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:42:24 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/02 13:31:27 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/04 21:20:16 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,11 @@ void check_elemnts(t_game *game)
         put_message("Error\nInvalid map check your 'Coins'!\n", 2, game);
     validate_elements(game);
 }
+
 void check_map(t_game *game)
 {
+    if (game->map == NULL || game->map[0] == NULL)
+        printf("Error");
     check_lines(game);
     check_walls(game);
     check_elemnts(game);

@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:25:27 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/03 20:51:03 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/04 19:48:43 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_game {
     int size_x;
     int size_y;
     int count_coins;
+    int exit_error;
     t_position player_position;
 }   t_game;
 

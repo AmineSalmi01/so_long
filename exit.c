@@ -6,27 +6,18 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:52:56 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/03 23:22:24 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/04 20:11:20 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	put_message(char *s, int fd, t_game *game)
-{
-	if (!s)
-		return ;
-	if (fd < 0)
-		return ;
-	if (*s)
-		write(fd, s, ft_strlen(s));
-	free(game);
-    exit(1);
-}
 void free_map(t_game *game)
 {
 	int i;
 
+	if (game->map == NULL)
+		return ;
 	i = 0;
 	while (game->map[i])
 	{
@@ -34,6 +25,20 @@ void free_map(t_game *game)
 		i++;
 	}
 	free(game->map);
+	game->map = NULL;
+}
+
+void	put_message(char *s, int fd, t_game *game)
+{
+	(void)game;
+	if (!s)
+		return ;
+	if (fd < 0)
+		return ;
+	if (*s)
+		write(fd, s, ft_strlen(s));
+	free_map(game);
+    exit(1);
 }
 
 void close_game(t_game *game)
@@ -58,6 +63,6 @@ void close_game(t_game *game)
 		mlx_delete_texture(game->exit_t);
 	if (game->exit)
 		mlx_delete_image(game->mlx, game->exit);
-	if (game->map)
-		free_map(game);
+	mlx_close_window(game->mlx);
+	free_map(game);
 }

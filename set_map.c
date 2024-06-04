@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 15:22:40 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/01 17:38:31 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/04 21:20:39 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,9 @@ char    **get_map(char *file_name)
         return (NULL);
     }
     i = 0;
-    line = get_next_line(fd);
-    while (line)
+    while ((line = get_next_line(fd)) != NULL)
     {
         map[i] = line;
-        line = get_next_line(fd);
         i++;
     }
     map[i] = NULL;

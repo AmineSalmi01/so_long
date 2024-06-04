@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 13:22:53 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/03 22:25:05 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/04 21:11:28 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void    init_struct(t_game *game, char *filename)
 {
     game->map = get_map(filename);
     lenght_map(game);
+    game->exit_error = 0;
     game->mlx = mlx_init(game->size_x * 40, game->size_y * 40, "so_long", false);
     game->count_coins = count_element(game->map, 'C');
 }
@@ -54,8 +55,13 @@ void set_game(t_game *game)
         close_game(game);
 }
 
+void leaks()
+{
+    system("leaks so_Long");
+}
 int main(int ac, char **av)
 {
+    atexit(leaks);
     t_game *game = malloc(sizeof(t_game));
 
     if (ac != 2)

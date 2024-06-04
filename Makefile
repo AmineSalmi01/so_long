@@ -1,5 +1,5 @@
 NAME = so_Long
-CC = cc -g -fsanitize=address
+CC = cc #-g -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror
 LIBS = MLX42/build/libmlx42.a -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/asalmi/.brew/opt/glfw/lib"
 RM = rm -rf
