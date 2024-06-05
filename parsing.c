@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:42:24 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/04 23:53:29 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/06 00:51:24 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,31 @@ void check_extension(char *arg, t_game *game)
     }
     close(fd);
 }
+
+// void find_player(t_game *game)
+// {
+//     game->x = 0;
+//     while (game->copy_map[game->x])
+//     {
+//         game->y = 0;
+//         while (game->copy_map[game->x][game->y])
+//         {
+//             if (game->copy_map[game->x][game->y] == 'P')
+//                 break ;
+//             (game->y)++;
+//         }
+//         (game->x)++;
+//     }
+//     //         printf("HERE\n");
+//     printf("***%d\n", game->y);
+//     printf("***%d\n", game->x);
+//     // flood_fill(game, game->x, game->y);
+//     printf("the E %d,%d\n", game->count_exit, game->check_e);
+//     printf("the C %d,%d\n", game->count_coins, game->check_c);
+//     if (game->count_exit != game->check_e || game->count_coins != game->check_c) 
+//         put_error("Error\nPath Invalid !\n", STDERR_FILENO, game);
+// }
+
 void validate_elements(t_game *game)
 {
     int i;
@@ -114,6 +139,7 @@ void check_elemnts(t_game *game)
 void check_map(t_game *game)
 {
     check_lines(game);
+    // find_player(game);
     check_walls(game);
     check_elemnts(game);
 }

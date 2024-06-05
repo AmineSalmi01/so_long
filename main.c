@@ -6,21 +6,35 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 13:22:53 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/05 00:03:38 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/06 00:21:46 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+// void find_position(t_game *game, int i, int j)
+// {
+//     game->player_position.x_position = j;
+//     game->player_position.y_position = i;
+//     printf("x = %d\n", game->player_position.x_position);
+//     printf("y = %d\n", game->player_position.y_position);
+// }
+
 int    init_struct(t_game *game, char *filename)
 {
-    game->map = get_map(filename);
+    game->map = get_map(filename);  
     if(!game->map)
         return 0;
+    game->copy_map = get_map(filename);
+    if (!game->copy_map)
+        return 0;
     lenght_map(game);
-    game->exit_error = 0;
+    game->check_c = 0;
+    game->check_e = 0;
+    game->count_exit = 0;
     game->mlx = mlx_init(game->size_x * 40, game->size_y * 40, "so_long", false);
     game->count_coins = count_element(game->map, 'C');
+    game->count_exit = count_element(game->map, 'E');
     return 1;
 }
 
@@ -58,10 +72,15 @@ void set_game(t_game *game)
         close_game(game);
 }
 
-void leaks()
-{
-    system("leaks so_Long");
-}
+
+// void test(void *game)
+// {
+//     print_map((t_game *)game);
+// }
+// void leaks()
+// {
+//     system("leaks so_Long");
+// }
 int main(int ac, char **av)
 {
     // atexit(leaks);
@@ -71,12 +90,12 @@ int main(int ac, char **av)
     if (ac != 2)
         put_error("Error\nProvide a map !", STDERR_FILENO, &game);
     check_extension(av[1], &game);
-    init_struct(&game, av[1]);
     if(!init_struct(&game, av[1]))
         put_error("Error\nEmpty map !", STDERR_FILENO, &game);
     check_map(&game);
     set_game(&game);
     print_map(&game);
+    // mlx_loop_hook(game.mlx, test, &game);
     mlx_key_hook(game.mlx, (mlx_keyfunc)move_processing, &game);
     mlx_loop(game.mlx);
     return 0;

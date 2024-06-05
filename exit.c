@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:52:56 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/04 23:54:39 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/05 21:23:09 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,5 @@ void close_game(t_game *game)
 		mlx_delete_image(game->mlx, game->exit);
 	mlx_close_window(game->mlx);
 	free_map(game);
+	exit(0);
 }

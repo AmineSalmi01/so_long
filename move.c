@@ -6,12 +6,18 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:37:38 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/04 22:15:02 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/05 22:47:38 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void exit_close(t_game *game)
+{
+    if (game->player_position.x_position == game->exit_position.x_position && 
+    game->player_position.y_position == game->exit_position.y_position && game->count_coins == 0)
+        close_game(game);
+}
 void vertical(struct mlx_key_data keydata, t_game *game)
 {
     if (keydata.key == MLX_KEY_W)
@@ -77,5 +83,6 @@ int move_processing(struct mlx_key_data keydata, void  *param)
         vertical(keydata, game);
     if (keydata.key == MLX_KEY_ESCAPE)
 	    close_game(game);
+    exit_close(game);
     return (1);
 }
