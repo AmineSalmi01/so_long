@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:52:56 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/05 21:23:09 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/06 13:02:07 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,30 @@
 
 void free_map(t_game *game)
 {
-	int i;
+    int i;
 
-	if (game && game->map == NULL)
-		return ;
-	i = 0;
-	while (game->map[i])
-	{
-		free(game->map[i]);
-		i++;
-	}
-	if(game->map)
-		free(game->map);
-	game->map = NULL;
+    if (game && game->map)
+    {
+        i = 0;
+        while (game->map[i])
+        {
+            free(game->map[i]);
+            i++;
+        }
+        free(game->map);
+        game->map = NULL;
+    }
+    if (game && game->copy_map)
+    {
+        i = 0;
+        while (game->copy_map[i])
+        {
+            free(game->copy_map[i]);
+            i++;
+        }
+        free(game->copy_map);
+        game->copy_map = NULL;
+    }
 }
 
 void	put_error(char *s, int fd, t_game *game)
@@ -66,5 +77,7 @@ void close_game(t_game *game)
 		mlx_delete_image(game->mlx, game->exit);
 	mlx_close_window(game->mlx);
 	free_map(game);
+	if (game->err_exit)
+		exit(1);
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:25:27 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/06 00:41:56 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/06 12:48:29 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,12 @@ typedef struct s_game {
     int size_x;
     int size_y;
     int count_coins;
-    int check_c;
     int count_exit;
+    int check_c;
     int check_e;
-    int x;
-    int y;
+    int x_p;
+    int y_p;
+    int err_exit;
     t_position player_position;
     t_position exit_position;
 }   t_game;
@@ -81,6 +82,8 @@ void	ft_bzero(void *s, size_t n);
 
 void flood_fill(t_game *game, int x, int y);
 
-// void find_position(t_game *game, int i, int j);
+void position_Player(t_game *game);
+
+void win_close(void *param);
 
 #endif
