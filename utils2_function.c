@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 00:03:06 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/06 12:25:19 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/07 01:12:30 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,14 @@ void position_Player(t_game *game)
 		}
 		i++;
 	}
+}
+
+void print_moves(t_game *game)
+{
+    game->move_counter++;
+    write(1, "Moves : ", 8);
+    ft_putnbr_fd(game->move_counter, 1);
+    write(1, "\n", 1);
 }
 
 void win_close(void *param)

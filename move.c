@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:37:38 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/05 22:47:38 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/07 01:12:01 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void vertical(struct mlx_key_data keydata, t_game *game)
                 (game->count_coins)--;
             game->map[game->player_position.y_position][game->player_position.x_position] = '0';
             game->map[game->player_position.y_position - 1][game->player_position.x_position] = 'P';
+            print_moves(game);
         }
     }
     if (keydata.key == MLX_KEY_S)
@@ -38,9 +39,10 @@ void vertical(struct mlx_key_data keydata, t_game *game)
                 (game->count_coins)--;
             game->map[game->player_position.y_position][game->player_position.x_position] = '0';
             game->map[game->player_position.y_position + 1][game->player_position.x_position] = 'P';
+            print_moves(game);
         }
     }
-    print_map(game);
+    print_map(game, keydata);
 }
 
 void horizontal(struct mlx_key_data keydata, t_game *game)
@@ -53,6 +55,7 @@ void horizontal(struct mlx_key_data keydata, t_game *game)
                 (game->count_coins)--;
             game->map[game->player_position.y_position][game->player_position.x_position] = '0';
             game->map[game->player_position.y_position][game->player_position.x_position + 1] = 'P';
+            print_moves(game);
         }
     }
     if (keydata.key == MLX_KEY_A)
@@ -63,9 +66,10 @@ void horizontal(struct mlx_key_data keydata, t_game *game)
                 (game->count_coins)--;
             game->map[game->player_position.y_position][game->player_position.x_position] = '0';
             game->map[game->player_position.y_position][game->player_position.x_position - 1] = 'P';
+            print_moves(game);
         }
     }
-    print_map(game);
+    print_map(game, keydata);
 }
 
 int move_processing(struct mlx_key_data keydata, void  *param)

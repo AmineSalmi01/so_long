@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:52:56 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/06 13:02:07 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/06 15:39:58 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,22 @@ void close_game(t_game *game)
 		mlx_delete_texture(game->wall_t);
 	if (game->wall)
 		mlx_delete_image(game->mlx, game->wall);
-	if (game->player_t)
-		mlx_delete_texture(game->player_t);
-	if (game->player)
-		mlx_delete_image(game->mlx, game->player);
+	if (game->player_t_Right)
+		mlx_delete_texture(game->player_t_Right);
+	if (game->player_right)
+		mlx_delete_image(game->mlx, game->player_right);
+	if (game->player_t_left)
+		mlx_delete_texture(game->player_t_left);
+	if (game->player_left)
+		mlx_delete_image(game->mlx, game->player_left);
+	if (game->player_t_up)
+		mlx_delete_texture(game->player_t_up);
+	if (game->player_up)
+		mlx_delete_image(game->mlx, game->player_up);
+	if (game->player_t_down)
+		mlx_delete_texture(game->player_t_down);
+	if (game->player_down)
+		mlx_delete_image(game->mlx, game->player_down);
 	if (game->coins_t)
 		mlx_delete_texture(game->coins_t);
 	if (game->coins)
