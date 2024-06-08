@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:25:27 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/07 01:15:31 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/07 01:23:37 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 #define SO_LONG_H
 
-#include "../MLX42/include/MLX42/MLX42.h"
+#include "../../MLX42/include/MLX42/MLX42.h"
 #include "./get_next_line/get_next_line.h"
 #include <fcntl.h>
 #include <unistd.h>
@@ -50,8 +50,6 @@ typedef struct s_game {
     mlx_texture_t *player_t_left;
     mlx_texture_t *coins_t;
     mlx_texture_t *exit_t;
-    mlx_texture_t *player_t_fram1;
-    mlx_image_t *player_fram1;
     mlx_image_t *ground;
     mlx_image_t *wall;
     mlx_image_t *player_start;

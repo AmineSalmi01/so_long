@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:43:36 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/07 01:08:29 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/07 15:53:16 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void    lenght_map(t_game *game)
         }
         (game->size_y)++;
     }
+    if (game->size_x < 1 || game->size_y < 1)
+        put_error("Error\nMap dimensions are too small!\n", STDERR_FILENO, game);
     if (game->size_x > 64 || game->size_y > 34)
         put_error("Error\nMap dimensions are too large!\n", STDERR_FILENO, game);
 }

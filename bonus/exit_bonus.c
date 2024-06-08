@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   exit_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:52:56 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/06 15:39:58 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/08 02:23:09 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void free_map(t_game *game)
 {
@@ -79,6 +79,10 @@ void close_game(t_game *game)
 		mlx_delete_texture(game->player_t_down);
 	if (game->player_down)
 		mlx_delete_image(game->mlx, game->player_down);
+	if (game->enemy_t)
+		mlx_delete_texture(game->enemy_t);
+	if (game->enemy)
+		mlx_delete_image(game->mlx, game->enemy);
 	if (game->coins_t)
 		mlx_delete_texture(game->coins_t);
 	if (game->coins)
@@ -87,6 +91,40 @@ void close_game(t_game *game)
 		mlx_delete_texture(game->exit_t);
 	if (game->exit)
 		mlx_delete_image(game->mlx, game->exit);
+	if (game->frame.coins_t_frame1)
+		mlx_delete_texture(game->frame.coins_t_frame1);
+	if (game->frame.coins_frame1)
+		mlx_delete_image(game->mlx, game->frame.coins_frame1);
+	if (game->frame.coins_t_frame2)
+		mlx_delete_texture(game->frame.coins_t_frame2);
+	if (game->frame.coins_frame2)
+		mlx_delete_image(game->mlx, game->frame.coins_frame2);
+	if (game->frame.coins_t_frame3)
+		mlx_delete_texture(game->frame.coins_t_frame3);
+	if (game->frame.coins_frame3)
+		mlx_delete_image(game->mlx, game->frame.coins_frame3);
+	if (game->frame.coins_t_frame4)
+		mlx_delete_texture(game->frame.coins_t_frame4);
+	if (game->frame.coins_frame4)
+		mlx_delete_image(game->mlx, game->frame.coins_frame4);
+	if (game->frame.coins_t_frame5)
+		mlx_delete_texture(game->frame.coins_t_frame5);
+	if (game->frame.coins_frame5)
+		mlx_delete_image(game->mlx, game->frame.coins_frame5);
+	if (game->frame.coins_t_frame6)
+		mlx_delete_texture(game->frame.coins_t_frame6);
+	if (game->frame.coins_frame6)
+		mlx_delete_image(game->mlx, game->frame.coins_frame6);
+	if (game->frame.coins_t_frame7)
+		mlx_delete_texture(game->frame.coins_t_frame7);
+	if (game->frame.coins_frame7)
+		mlx_delete_image(game->mlx, game->frame.coins_frame7);
+	if (game->frame.coins_t_frame8)
+		mlx_delete_texture(game->frame.coins_t_frame8);
+	if (game->frame.coins_frame8)
+		mlx_delete_image(game->mlx, game->frame.coins_frame8);
+	if (game->coins_tmp)
+		mlx_delete_image(game->mlx ,game->coins_tmp);
 	mlx_close_window(game->mlx);
 	free_map(game);
 	if (game->err_exit)
