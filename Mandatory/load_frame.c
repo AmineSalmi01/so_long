@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 23:05:45 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/07 15:52:29 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/09 23:29:39 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 //         game->err_exit++;
 //         close_game(game);
 //     }
-//     game->player_fram1 = mlx_texture_to_image(game->mlx, game->player_t_fram1);
+//     game->player_fram1 = mlx_texture_to_image(game->mlx,
+		// game->player_t_fram1);
 //     if (!game->player_fram1)
 //     {
 //         game->err_exit++;

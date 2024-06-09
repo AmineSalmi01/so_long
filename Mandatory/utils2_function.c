@@ -24,10 +24,10 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-void position_Player(t_game *game)
+void	position_Player(t_game *game)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (game->copy_map[i])
@@ -39,7 +39,7 @@ void position_Player(t_game *game)
 			{
 				game->x_p = j;
 				game->y_p = i;
-				break;
+				break ;
 			}
 			j++;
 		}
@@ -47,18 +47,18 @@ void position_Player(t_game *game)
 	}
 }
 
-void print_moves(t_game *game)
+void	print_moves(t_game *game)
 {
-    game->move_counter++;
-    write(1, "Moves : ", 8);
-    ft_putnbr_fd(game->move_counter, 1);
-    write(1, "\n", 1);
+	game->move_counter++;
+	write(1, "Moves : ", 8);
+	ft_putnbr_fd(game->move_counter, 1);
+	write(1, "\n", 1);
 }
 
-void win_close(void *param)
+void	win_close(void *param)
 {
-    t_game *game;
+	t_game	*game;
 
-    game = (t_game *)param;
-    close_game(game);
+	game = (t_game *)param;
+	close_game(game);
 }

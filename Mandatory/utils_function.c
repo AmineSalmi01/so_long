@@ -12,55 +12,57 @@
 
 #include "so_long.h"
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (s[i])
-        i++;
-    return (i);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
-int count_element(char **map, char c)
+int	count_element(char **map, char c)
 {
-    int i;
-    int j;
-    int counter;
+	int	i;
+	int	j;
+	int	counter;
 
-    i = 0;
-    counter = 0;
-    while (map[i])
-    {
-        j = 0;
-        while (map[i][j])
-        {
-            if (map[i][j] == c)
-                counter++;
-            j++;
-        }
-        i++;
-    }
-    return (counter);
+	i = 0;
+	counter = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == c)
+				counter++;
+			j++;
+		}
+		i++;
+	}
+	return (counter);
 }
 
-void    lenght_map(t_game *game)
+void	lenght_map(t_game *game)
 {
-    game->size_x = 0;
-    game->size_y = 0;
-    while (game->map[game->size_y])
-    {
-        if (game->size_y == 0)
-        {
-            while (game->map[game->size_y][(game->size_x) + 1])
-                (game->size_x)++;
-        }
-        (game->size_y)++;
-    }
-    if (game->size_x < 1 || game->size_y < 1)
-        put_error("Error\nMap dimensions are too small!\n", STDERR_FILENO, game);
-    if (game->size_x > 64 || game->size_y > 34)
-        put_error("Error\nMap dimensions are too large!\n", STDERR_FILENO, game);
+	game->size_x = 0;
+	game->size_y = 0;
+	while (game->map[game->size_y])
+	{
+		if (game->size_y == 0)
+		{
+			while (game->map[game->size_y][(game->size_x) + 1])
+				(game->size_x)++;
+		}
+		(game->size_y)++;
+	}
+	if (game->size_x < 1 || game->size_y < 1)
+		put_error("Error\nMap dimensions are too small!\n", STDERR_FILENO,
+			game);
+	if (game->size_x > 64 || game->size_y > 34)
+		put_error("Error\nMap dimensions are too large!\n", STDERR_FILENO,
+			game);
 }
 
 void	ft_putchar_fd(char c, int fd)
