@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 15:22:40 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/10 02:16:08 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/10 15:49:22 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,52 @@ size_t	count_line(int fd)
 	char	*line;
 
 	counter = 0;
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
-		free(line);
 		counter++;
+		free(line);
+		line = get_next_line(fd);
 	}
 	return (counter);
+}
+
+char	**allocate_map(int size)
+{
+	char	**map;
+
+	map = (char **)malloc(sizeof(char *) * (size + 1));
+	if (!map)
+		return (NULL);
+	return (map);
+}
+
+char	**read_map(int fd, int size)
+{
+	char	**map;
+	char	*line;
+	int		i;
+
+	map = allocate_map(size);
+	if (!map)
+		return (NULL);
+	i = 0;
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		map[i] = line;
+		i++;
+		line = get_next_line(fd);
+	}
+	map[i] = NULL;
+	return (map);
 }
 
 char	**get_map(char *file_name)
 {
 	int		fd;
-	char	*line;
-	char	**map;
 	int		size;
-	int		i;
+	char	**map;
 
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
@@ -41,22 +72,10 @@ char	**get_map(char *file_name)
 	if (!size)
 		return (NULL);
 	close(fd);
-	map = (char **)malloc(sizeof(char *) * (size + 1));
-	if (!map)
-		return (NULL);
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
-	{
-		free(map);
 		return (NULL);
-	}
-	i = 0;
-	while ((line = get_next_line(fd)) != NULL)
-	{
-		map[i] = line;
-		i++;
-	}
-	map[i] = NULL;
+	map = read_map(fd, size);
 	close(fd);
 	return (map);
 }

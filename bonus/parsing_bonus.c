@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:42:24 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/07 15:43:19 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/09 15:26:01 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,6 @@ void check_path(t_game *game)
     flood_fill(game, game->x_p, game->y_p);
     if (game->check_c != game->count_coins || game->check_e != game->count_exit)
         put_error("Error\nPath Invalid !\n", STDERR_FILENO, game);
-    // int i, j;
-
-    // i = 0;
-    // while (game->copy_map[i])
-    // {
-    //     j = 0;
-    //     while (game->copy_map[i][j])
-    //     {
-    //         printf("%c", game->copy_map[i][j]);
-    //         j++;
-    //     }
-    //     printf("\n");
-    //     i++;
-    // }
 }
 
 void validate_elements(t_game *game)
@@ -72,7 +58,8 @@ void validate_elements(t_game *game)
                 game->map[i][j] != '0' && 
                 game->map[i][j] != 'C' && 
                 game->map[i][j] != 'E' && 
-                game->map[i][j] != 'P' && 
+                game->map[i][j] != 'P' &&
+                game->map[i][j] != 'H' &&
                 game->map[i][j] != '\n')
                 put_error("Error\nInvalid map check your elements!\n", STDERR_FILENO, game);
             j++;

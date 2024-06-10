@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:17:06 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/10 02:35:27 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/10 14:36:52 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,16 @@ void	print_exit(t_game *game)
 	}
 }
 
-void	exit_position(t_game *game, int i, int j)
-{
-	game->exit_position.x_position = j;
-	game->exit_position.y_position = i;
-}
-
 void	print_map(t_game *game, struct mlx_key_data keydata)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	while (game->map[i])
+	i = -1;
+	while (game->map[++i])
 	{
-		j = 0;
-		while (game->map[i][j])
+		j = -1;
+		while (game->map[i][++j])
 		{
 			if (mlx_image_to_window(game->mlx, game->ground, j * 40, i
 					* 40) < 0)
@@ -72,9 +66,7 @@ void	print_map(t_game *game, struct mlx_key_data keydata)
 				print_coins(game, i, j);
 			if (game->map[i][j] == 'E')
 				exit_position(game, i, j);
-			j++;
 		}
-		i++;
 	}
 	print_exit(game);
 }

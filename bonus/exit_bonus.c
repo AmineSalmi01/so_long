@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:52:56 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/08 02:23:09 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/10 16:34:56 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,8 @@ void	put_error(char *s, int fd, t_game *game)
     exit(1);
 }
 
-void close_game(t_game *game)
+void close_player(t_game *game)
 {
-	if (game->ground_t)
-		mlx_delete_texture(game->ground_t);
-	if (game->ground)
-		mlx_delete_image(game->mlx, game->ground);
-	if (game->wall_t)
-		mlx_delete_texture(game->wall_t);
-	if (game->wall)
-		mlx_delete_image(game->mlx, game->wall);
 	if (game->player_t_Right)
 		mlx_delete_texture(game->player_t_Right);
 	if (game->player_right)
@@ -79,6 +71,18 @@ void close_game(t_game *game)
 		mlx_delete_texture(game->player_t_down);
 	if (game->player_down)
 		mlx_delete_image(game->mlx, game->player_down);
+}
+
+void close_game(t_game *game)
+{
+	if (game->ground_t)
+		mlx_delete_texture(game->ground_t);
+	if (game->ground)
+		mlx_delete_image(game->mlx, game->ground);
+	if (game->wall_t)
+		mlx_delete_texture(game->wall_t);
+	if (game->wall)
+		mlx_delete_image(game->mlx, game->wall);
 	if (game->enemy_t)
 		mlx_delete_texture(game->enemy_t);
 	if (game->enemy)

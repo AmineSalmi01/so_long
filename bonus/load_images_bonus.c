@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:57:58 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/08 02:17:57 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/09 22:19:44 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void load_gound_and_wall(t_game *game)
 }
 void load_coins_and_exit(t_game *game)
 {
-    game->coins_t = mlx_load_png(PATH_COINS);
+    game->coins_t = mlx_load_png(PATH_COINS_FRAME1);
     if (!game->coins_t)
     {
         game->err_exit++;

@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 14:52:56 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/09 23:29:13 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/10 15:53:52 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	put_error(char *s, int fd, t_game *game)
 
 void	close_player(t_game *game)
 {
-	if (game->player_t_Right)
-		mlx_delete_texture(game->player_t_Right);
+	if (game->player_t_right)
+		mlx_delete_texture(game->player_t_right);
 	if (game->player_right)
 		mlx_delete_image(game->mlx, game->player_right);
 	if (game->player_t_left)

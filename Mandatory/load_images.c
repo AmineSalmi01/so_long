@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 14:57:58 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/09 23:30:27 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/10 15:54:17 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,13 @@ void	load_player_remaining(t_game *game)
 
 void	load_player(t_game *game)
 {
-	game->player_t_Right = mlx_load_png(PATH_PLAYER_RIGHT);
-	if (!game->player_t_Right)
+	game->player_t_right = mlx_load_png(PATH_PLAYER_RIGHT);
+	if (!game->player_t_right)
 	{
 		game->err_exit++;
 		close_game(game);
 	}
-	game->player_right = mlx_texture_to_image(game->mlx, game->player_t_Right);
+	game->player_right = mlx_texture_to_image(game->mlx, game->player_t_right);
 	if (!game->player_right)
 	{
 		game->err_exit++;

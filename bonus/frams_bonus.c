@@ -6,13 +6,13 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 17:53:12 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/08 02:14:07 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/10 14:52:15 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void load_frames(t_game *game)
+void load_frame1(t_game *game)
 {
     game->frame.coins_t_frame1 = mlx_load_png(PATH_COINS_FRAME1);
     if (!game->frame.coins_t_frame1)
@@ -66,6 +66,7 @@ void load_frame2(t_game *game)
         game->err_exit++;
         close_game(game);
     }
+    
 }
 
 void load_frame3(t_game *game)

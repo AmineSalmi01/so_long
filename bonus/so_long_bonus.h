@@ -30,7 +30,6 @@
 #define PATH_PLAYER_ENEMY "./images/enemy/enemy1.png"
 #define PATH_GROUND "./images/other/ground.png"
 #define PATH_WALL "./images/other/wall.png"
-#define PATH_COINS "./images/frame/coins_frame1.png"
 #define PATH_EXIT "./images/other/exit.png"
 
 #define PATH_COINS_FRAME1 "./images/frame/coins_frame1.png"
@@ -102,8 +101,11 @@ typedef struct s_game {
     int err_exit;
     int has_moved;
     int move_counter;
+    char *str_move;
+    mlx_image_t *move_img;
     t_position player_position;
     t_position exit_position;
+    t_position enemy_position;
     t_frame frame;
 }   t_game;
 
@@ -143,10 +145,17 @@ void win_close(void *param);
 void load_gound_and_wall(t_game *game);
 void load_coins_and_exit(t_game *game);
 void load_player(t_game *game);
-void load_frames(t_game *game);
+
+void load_frame1(t_game *game);
+void load_frame2(t_game *game);
+void load_frame3(t_game *game);
+void load_frame4(t_game *game);
 
 void print_moves(t_game *game);
 void handle_direction(t_game *game, struct mlx_key_data keydata);
 void load_enemy(t_game *game);
+
+char	*ft_itoa(int n);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

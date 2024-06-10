@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 00:03:06 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/10 02:36:24 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/10 14:36:07 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	handle_direction(t_game *game, struct mlx_key_data keydata)
 void	print_moves(t_game *game)
 {
 	game->move_counter++;
-	write(1, "Moves : ", 8);
+	write(1, "Move : ", 8);
 	ft_putnbr_fd(game->move_counter, 1);
 	write(1, "\n", 1);
 }

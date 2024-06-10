@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_bonus.h                                          :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:25:27 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/07 01:23:37 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/10 15:54:25 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@
 
 typedef struct s_position
 {
-	int				x_position;
-	int				y_position;
-}					t_position;
+	int		x_position;
+	int		y_position;
+}			t_position;
 
 typedef struct s_game
 {
@@ -46,7 +46,7 @@ typedef struct s_game
 	mlx_texture_t	*ground_t;
 	mlx_texture_t	*wall_t;
 	mlx_texture_t	*player_t_start;
-	mlx_texture_t	*player_t_Right;
+	mlx_texture_t	*player_t_right;
 	mlx_texture_t	*player_t_up;
 	mlx_texture_t	*player_t_down;
 	mlx_texture_t	*player_t_left;
@@ -76,47 +76,48 @@ typedef struct s_game
 	t_position		exit_position;
 }					t_game;
 
-void				check_extension(char *arg, t_game *game);
+void	check_extension(char *arg, t_game *game);
 
-void				put_error(char *s, int fd, t_game *game);
+void	put_error(char *s, int fd, t_game *game);
 
-size_t				ft_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 
-char				**get_map(char *file_name);
+char	**get_map(char *file_name);
 
-int					count_element(char **map, char c);
+int		count_element(char **map, char c);
 
-void				check_map(t_game *game);
+void	check_map(t_game *game);
 
-void				lenght_map(t_game *game);
+void	lenght_map(t_game *game);
 
-void				close_game(t_game *game);
+void	close_game(t_game *game);
 
-void				print_map(t_game *game, struct mlx_key_data keydata);
+void	print_map(t_game *game, struct mlx_key_data keydata);
 
-int					move_processing(struct mlx_key_data keydata, void *param);
+int		move_processing(struct mlx_key_data keydata, void *param);
 
-void				ft_putnbr_fd(int n, int fd);
+void	ft_putnbr_fd(int n, int fd);
 
-int					init_struct(t_game *game, char *filename);
+int		init_struct(t_game *game, char *filename);
 
-void				ft_bzero(void *s, size_t n);
+void	ft_bzero(void *s, size_t n);
 
-void				flood_fill(t_game *game, int x, int y);
+void	flood_fill(t_game *game, int x, int y);
 
-void				position_player(t_game *game);
+void	position_player(t_game *game);
 
-void				win_close(void *param);
+void	win_close(void *param);
 
-void				load_gound_and_wall(t_game *game);
-void				load_coins_and_exit(t_game *game);
-void				load_player(t_game *game);
+void	load_gound_and_wall(t_game *game);
+void	load_coins_and_exit(t_game *game);
+void	load_player(t_game *game);
 
-void				print_moves(t_game *game);
+void	print_moves(t_game *game);
 
-void				check_walls_inner(t_game *game, int i, int j);
+void	check_walls_inner(t_game *game, int i, int j);
 
-void				check_path(t_game *game);
-void				handle_direction(t_game *game, struct mlx_key_data keydata);
+void	check_path(t_game *game);
+void	handle_direction(t_game *game, struct mlx_key_data keydata);
+void	exit_position(t_game *game, int i, int j);
 
 #endif

@@ -4,7 +4,10 @@ CFLAGS = -Wall -Wextra -Werror
 LIBS = ../../MLX42/build/libmlx42.a -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/asalmi/.brew/opt/glfw/lib"
 RM = rm -rf
 
-SRC = $(wildcard *.c) $(wildcard get_next_line/*c)
+SRC = exit.c load_images.c main.c move.c parsing_utils.c parsing.c path_finding.c \
+		print_map.c set_map.c utils_function.c utils2_function.c ./get_next_line/get_next_line.c \
+		./get_next_line/get_next_line_utils.c
+
 OBJC = $(SRC:.c=.o)
 
 RED=\033[0;31m

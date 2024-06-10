@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:17:06 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/07 23:54:16 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/09 22:05:23 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,15 @@ void handle_direction(t_game *game, struct mlx_key_data keydata)
         game->player_start = game->player_down;
     }
 }
+
+void print_enemy(t_game *game, int i, int j)
+{
+    if (mlx_image_to_window(game->mlx, game->enemy, j * 40, i * 40) < 0)
+        close_game(game);
+    game->enemy_position.x_position = j;
+    game->enemy_position.y_position = i;
+}
+
 void print_wall(t_game *game, int i, int j)
 {
     if (mlx_image_to_window(game->mlx, game->wall, j * 40, i * 40) < 0)
@@ -90,6 +99,8 @@ void    print_map(t_game *game, struct mlx_key_data keydata)
                     print_coins(game, i, j);
                 if (game->map[i][j] == 'E')
                     exit_position(game, i, j);
+                if (game->map[i][j] == 'H')
+                    print_enemy(game, i, j);
             j++;
         }
         i++;

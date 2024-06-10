@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 13:22:53 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/08 02:52:07 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/10 16:32:09 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,6 @@ void set_game(t_game *game)
     load_enemy(game);
 }
 
-// void leaks()
-// {
-//     system("leaks so_Long");
-// }
-
 void test_animation(void *param)
 {
     t_game *game;
@@ -82,16 +77,16 @@ void test_animation(void *param)
     else if (i > 21 && i <= 24)
         game->coins = game->frame.coins_frame7;
     else if (i > 24 && i <= 27)
-        game->coins = game->frame.coins_frame8;
+        game->coins = game->frame.coins_frame8;   
     if (i == 27)
         i = 0;
     print_map(game, keydata);
     i++;
 }
 
+
 int main(int ac, char **av)
 {
-    // atexit(leaks);
     t_game game;
     struct mlx_key_data keydata;
 
@@ -104,8 +99,10 @@ int main(int ac, char **av)
         put_error("Error\nEmpty map !", STDERR_FILENO, &game);
     check_map(&game);
     set_game(&game);
-    load_frames(&game);
-    // print_map(&game, keydata);
+    load_frame1(&game);
+    load_frame2(&game);
+    load_frame3(&game);
+    load_frame4(&game);
     mlx_key_hook(game.mlx, (mlx_keyfunc)move_processing, &game);
     mlx_loop_hook(game.mlx, test_animation, &game);
     mlx_close_hook(game.mlx, win_close, &game);

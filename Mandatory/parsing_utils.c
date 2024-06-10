@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 00:49:55 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/10 02:37:03 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/10 14:36:25 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,10 @@ void	check_walls_inner(t_game *game, int i, int j)
 		put_error("Error\nInvalid map check your walls!\n", STDERR_FILENO, game);
 	if (game->map[i + 1] == NULL && game->map[i][j] != '1')
 		put_error("Error\nInvalid map check your walls!\n", STDERR_FILENO, game);
+}
+
+void	exit_position(t_game *game, int i, int j)
+{
+	game->exit_position.x_position = j;
+	game->exit_position.y_position = i;
 }
