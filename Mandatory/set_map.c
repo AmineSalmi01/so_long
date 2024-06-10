@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 15:22:40 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/07 15:53:11 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/10 02:16:08 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,3 @@ char	**get_map(char *file_name)
 	close(fd);
 	return (map);
 }
-// int main()
-// {
-//     atexit(ll);
-//     char **s = get_map("amine.txt");
-//     for (int i = 0; s[i] != NULL; i++)
-//         printf("%s", s[i]);
-//     printf("\nPress any key to exit...\n");
-//     getchar();
-//     return (0);
-// }

@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:04:35 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/07 15:53:03 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/10 00:51:51 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	flood_fill(t_game *game, int x, int y)
 		game->copy_map[y][x] = '1';
 	}
 	game->copy_map[y][x] = '1';
-
 	flood_fill(game, x + 1, y);
 	flood_fill(game, x - 1, y);
 	flood_fill(game, x, y + 1);

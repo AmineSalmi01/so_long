@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 00:03:06 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/07 15:53:20 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/10 02:36:24 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-void	position_Player(t_game *game)
+void	position_player(t_game *game)
 {
 	int	i;
 	int	j;
@@ -44,6 +44,26 @@ void	position_Player(t_game *game)
 			j++;
 		}
 		i++;
+	}
+}
+
+void	handle_direction(t_game *game, struct mlx_key_data keydata)
+{
+	if (keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT)
+	{
+		game->player_start = game->player_right;
+	}
+	else if (keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_LEFT)
+	{
+		game->player_start = game->player_left;
+	}
+	else if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
+	{
+		game->player_start = game->player_up;
+	}
+	else if (keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN)
+	{
+		game->player_start = game->player_down;
 	}
 }
 
