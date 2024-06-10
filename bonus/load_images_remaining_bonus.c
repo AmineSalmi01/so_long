@@ -12,24 +12,24 @@
 
 #include "so_long_bonus.h"
 
-void load_enemy(t_game *game)
+void	load_enemy(t_game *game)
 {
-    game->enemy_t = mlx_load_png(PATH_PLAYER_ENEMY);
-    if (!game->enemy_t)
-    {
-        game->err_exit++;
-        close_game(game);
-    }
-    game->enemy = mlx_texture_to_image(game->mlx, game->enemy_t);
-    if (!game->enemy)
-    {
-        game->err_exit++;
-        close_game(game);
-    }
-    game->coins_tmp = mlx_texture_to_image(game->mlx, game->coins_t);
-    if (!game->coins_tmp)
-    {
-        game->err_exit++;
-        close_game(game);
-    }
+	game->enemy_t = mlx_load_png(PATH_PLAYER_ENEMY);
+	if (!game->enemy_t)
+	{
+		game->err_exit++;
+		close_game(game);
+	}
+	game->enemy = mlx_texture_to_image(game->mlx, game->enemy_t);
+	if (!game->enemy)
+	{
+		game->err_exit++;
+		close_game(game);
+	}
+	game->coins_tmp = mlx_texture_to_image(game->mlx, game->coins_t);
+	if (!game->coins_tmp)
+	{
+		game->err_exit++;
+		close_game(game);
+	}
 }
