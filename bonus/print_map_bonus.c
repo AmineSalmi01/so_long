@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:17:06 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/11 00:15:48 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/11 01:17:52 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	handle_direction(t_game *game, struct mlx_key_data keydata)
 {
-	if (keydata.key == MLX_KEY_D)
+	if (keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT)
 	{
 		game->player_start = game->player_right;
 	}
-	else if (keydata.key == MLX_KEY_A)
+	else if (keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_LEFT)
 	{
 		game->player_start = game->player_left;
 	}
-	else if (keydata.key == MLX_KEY_W)
+	else if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
 	{
 		game->player_start = game->player_up;
 	}
-	else if (keydata.key == MLX_KEY_S)
+	else if (keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN)
 	{
 		game->player_start = game->player_down;
 	}

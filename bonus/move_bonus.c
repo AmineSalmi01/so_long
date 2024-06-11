@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:37:38 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/10 22:47:23 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/11 01:53:55 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ void	move_player(t_game *game, int new_x, int new_y)
 
 void	vertical(struct mlx_key_data keydata, t_game *game)
 {
-	if (keydata.key == MLX_KEY_W)
+	if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
 	{
 		move_player(game, game->player_position.x_position,
 			game->player_position.y_position - 1);
 	}
-	if (keydata.key == MLX_KEY_S)
+	if (keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN)
 	{
 		move_player(game, game->player_position.x_position,
 			game->player_position.y_position + 1);
@@ -44,12 +44,12 @@ void	vertical(struct mlx_key_data keydata, t_game *game)
 
 void	horizontal(struct mlx_key_data keydata, t_game *game)
 {
-	if (keydata.key == MLX_KEY_D)
+	if (keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT)
 	{
 		move_player(game, game->player_position.x_position + 1,
 			game->player_position.y_position);
 	}
-	if (keydata.key == MLX_KEY_A)
+	if (keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_LEFT)
 	{
 		move_player(game, game->player_position.x_position - 1,
 			game->player_position.y_position);
@@ -62,15 +62,19 @@ int	move_processing(struct mlx_key_data keydata, void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
-	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
+	if ((keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
+		&& keydata.action == MLX_PRESS)
 		vertical(keydata, game);
-	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
+	if ((keydata.key == MLX_KEY_D || keydata.key == MLX_KEY_RIGHT)
+		&& keydata.action == MLX_PRESS)
 		horizontal(keydata, game);
-	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
+	if ((keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_LEFT)
+		&& keydata.action == MLX_PRESS)
 		horizontal(keydata, game);
-	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
+	if ((keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN)
+		&& keydata.action == MLX_PRESS)
 		vertical(keydata, game);
-	if (keydata.key == MLX_KEY_ESCAPE)
+	if (keydata.key == MLX_KEY_ESCAPE || keydata.key == MLX_KEY_Q)
 		close_game(game);
 	exit_close(game);
 	enemy_close(game);
