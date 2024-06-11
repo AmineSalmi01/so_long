@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 18:37:38 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/11 01:53:55 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/11 14:47:03 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ void	vertical(struct mlx_key_data keydata, t_game *game)
 	if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP)
 	{
 		move_player(game, game->player_position.x_position,
-			game->player_position.y_position - 1);
+			game->player_position.y_position - 1);	
 	}
 	if (keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN)
 	{
 		move_player(game, game->player_position.x_position,
-			game->player_position.y_position + 1);
+			game->player_position.y_position + 1);	
 	}
 	print_map(game, keydata);
 }
@@ -52,7 +52,7 @@ void	horizontal(struct mlx_key_data keydata, t_game *game)
 	if (keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_LEFT)
 	{
 		move_player(game, game->player_position.x_position - 1,
-			game->player_position.y_position);
+			game->player_position.y_position);	
 	}
 	print_map(game, keydata);
 }

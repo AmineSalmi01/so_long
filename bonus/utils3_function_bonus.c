@@ -6,7 +6,7 @@
 /*   By: asalmi <asalmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 00:23:27 by asalmi            #+#    #+#             */
-/*   Updated: 2024/06/11 01:52:35 by asalmi           ###   ########.fr       */
+/*   Updated: 2024/06/11 14:44:06 by asalmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	print_moves(t_game *game)
 	if (game->move_img)
 		mlx_delete_image(game->mlx, game->move_img);
 	game->str_move = ft_itoa(game->move_counter);
-	full_str = ft_strjoin("Moves :", game->str_move);
-	game->move_img = mlx_put_string(game->mlx, full_str, 10, 10);
+	full_str = ft_strjoin("Move :", game->str_move);
+	// game->move_img = mlx_put_string(game->mlx, full_str, 10, 10);
 	free(game->str_move);
 	free(full_str);
 }
